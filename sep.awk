@@ -1,8 +1,7 @@
 BEGIN {
-FPAT = "([^,]+)|(\"[^\"]+\")"
 FS = ","
 OFS = ","
-print "Car_ID, Year, Car_Make, Car_Model, Owner_Name, Owner_Email" > "Cars_Info.csv"
+print "Car_ID, Year, Make, Model, Name, Email" > "Cars_Info.csv"
 print "Judge_ID, Judge_Name" > "Judges.csv"
 print "Car_ID, Car_Score" > "Car_Score.csv"
 }
