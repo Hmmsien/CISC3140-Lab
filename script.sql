@@ -36,12 +36,12 @@ CREATE TABLE Rank(
    Rank int,
    Car_ID primary key);
 
-INSERT INTO Rank SELECT rowid,Car_ID FROM Ranking;
+INSERT INTO Rank(Rank,Car_ID) SELECT rowid,Car_ID FROM Ranking;
 
 .mode csv
 .output extract1.csv
-SELECT Rank.Rank, Rank.Car_ID, Cars_Info.Year,Cars_Info.Make,Cars_Info.Model
-From Rank
-INNER JOIN Cars_Info on Cars_Info.Car_ID = Rank.Car_ID;
-
+--SELECT Rank.Rank, Rank.Car_ID, Cars_Info.Year,Cars_Info.Make,Cars_Info.Model
+--From Rank
+--INNER JOIN Cars_Info on Cars_Info.Car_ID = Rank.Car_ID;
+select * from Rank;
 
