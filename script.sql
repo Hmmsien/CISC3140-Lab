@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS Judges;
 DROP TABLE IF EXISTS Car_Score;
 DROP TABLE IF EXISTS Cars_Info;
-DROP TABLE IF EXISTS Car_Ranking;
 
 CREATE TABLE Judges (
     Judge_ID text,
@@ -25,13 +24,11 @@ CREATE TABLE Cars_Info(
 .mode csv
 .import \Cars_Info.csv Cars_Info
 
-CREATE TABLE Car_Ranking(
-   Car_ID int,
-   Score int);
-
-INSERT INTO Car_Ranking SELECT * FROM Car_Score ORDER BY Car_Score DESC;
-
 .mode csv
 .output extract1.csv
-SELECT * FROM Car_Ranking;
+
+SELECT Car_Score.Car_Score,Car_Score.Car_ID,Cars_Info.Year,Cars_Info.Make,Cars_Info.Model
+FROM Car_Score
+INNER JOIN Cars_Info ON Cars_Info.Car_ID = Car_Score.Car_ID
+ORDER BY Car_Score.Car_Score DESC;
 
