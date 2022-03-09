@@ -27,21 +27,25 @@ CREATE TABLE Cars_Info(
 .import \Cars_Info.csv Cars_Info
 
 CREATE TABLE Ranking(
-   Car_ID primary key,
-   Car_Score int);
+   Car_ID int primary key,
+   Year int,
+   Make text,
+   Model text);
 
-INSERT INTO Ranking SELECT * FROM Car_Score Order By Car_Score DESC;
+INSERT INTO Ranking SELECT Cars_Info.Car_ID, Cars_Info.Year,Cars_Info.Make,Cars_Info.Model
+From Cars_Info 
+INNER JOIN Car_Score ON Car_Score.Car_ID = Cars_Info.Car_ID
+ORDER BY  Car_Score.Car_Score DESC;
 
 CREATE TABLE Rank(
-   Rank int,
-   Car_ID primary key);
-
-INSERT INTO Rank(Rank,Car_ID) SELECT rowid,Car_ID FROM Ranking;
+   Ranking int,
+   Car_ID int primary key,
+   Year int,
+   Make text,
+   Model text);
+INSERT INTO Rank (Ranking, Car_ID, Year, Make, Model) SELECT rowid,Car_ID,Year,Make,Model FROM Ranking;   
 
 .mode csv
 .output extract1.csv
---SELECT Rank.Rank, Rank.Car_ID, Cars_Info.Year,Cars_Info.Make,Cars_Info.Model
---From Rank
---INNER JOIN Cars_Info on Cars_Info.Car_ID = Rank.Car_ID;
-select * from Rank;
+SELECT * From Rank;
 
