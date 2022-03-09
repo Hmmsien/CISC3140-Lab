@@ -32,9 +32,10 @@ CREATE TABLE Ranking(
    Car_ID int primary key,
    Year int,
    Make text,
-   Model text);
+   Model text,
+   Score int);
 
-INSERT INTO Ranking SELECT Cars_Info.Car_ID, Cars_Info.Year,Cars_Info.Make,Cars_Info.Model
+INSERT INTO Ranking SELECT Cars_Info.Car_ID, Cars_Info.Year,Cars_Info.Make,Cars_Info.Model,Car_Score.Car_Score
 From Cars_Info 
 INNER JOIN Car_Score ON Car_Score.Car_ID = Cars_Info.Car_ID
 ORDER BY  Car_Score.Car_Score DESC;
@@ -48,9 +49,15 @@ CREATE TABLE Rank(
    Model text);
 INSERT INTO Rank (Ranking, Car_ID, Year, Make, Model) SELECT rowid,Car_ID,Year,Make,Model FROM Ranking;   
 
+DROP TABLE IF EXISTS orderedScores;
+CREATE TABLE orderedScores AS 
+SELECT * FROM Ranking ORDER BY Car_Score DESC;
+UPDATE orderedScores
+SET Rank = rowid;
+
 .mode csv
 .output extract1.csv
-SELECT * From Rank;
+SELECT * From orderedScores;
 
 .mode column
 .output
