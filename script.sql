@@ -1,4 +1,3 @@
-sqlite3 cars.db << 'EOS'
 .headers on
 .mode csv
 
@@ -42,24 +41,39 @@ ORDER BY  Car_Score.Car_Score DESC;
 
 DROP TABLE IF EXISTS Rank;
 CREATE TABLE Rank(
-   Ranking int,
+   Rank int,
    Car_ID int primary key,
    Year int,
    Make text,
    Model text);
-INSERT INTO Rank (Ranking, Car_ID, Year, Make, Model) SELECT rowid,Car_ID,Year,Make,Model FROM Ranking;   
-
-DROP TABLE IF EXISTS orderedScores;
-CREATE TABLE orderedScores AS 
-SELECT * FROM Ranking ORDER BY Car_Score DESC;
-UPDATE orderedScores
-SET Rank = rowid;
+INSERT INTO Rank SELECT Score,Car_ID,Year,Make,Model FROM Ranking;
+UPDATE Rank
+SET Rank = rowid;   
 
 .mode csv
 .output extract1.csv
-SELECT * From orderedScores;
+SELECT * From Rank;
 
-.mode column
-.output
 
-EOS
+DROP TABLE IF EXISTS Top3;
+CREATE TABLE Top3 (
+	Rank INT,
+	Car_ID INT,
+	Year INT,
+	Make TEXT,
+	Model TEXT,
+	Total INT
+);
+
+INSERT INTO Top3 SELECT rowid,* FROM Ranking ORDER BY Score DESC
+where (
+   select count(*) from Ranking as f
+   where f.Make = Ranking.Make
+) <= 3;
+
+
+
+.headers ON
+.mode csv
+.output extract2.csv
+SELECT * FROM Top3;
