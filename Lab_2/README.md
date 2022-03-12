@@ -42,12 +42,12 @@ o An ‘average’ speed score that is a calculated as duration divided by numbe
 In SQLscripts.sql, your above work should be saved in *.sql file(s) and saved to your Git project repository.
 
 ----------------------------------------------------------------------------------------------------------------------------
-##Installation:
+## Installation:
 Run using the command make lab2
 
 
 -----------------------------------------------------------------------------------------------------------------------------
-##Dependencies:
+## Dependencies:
 Sample Data: https://gist.github.com/katychuang/d66a59b6db4e59c16efd4c42ad411f8e
 BC Linux machines
 
