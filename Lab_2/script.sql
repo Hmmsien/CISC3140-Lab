@@ -50,6 +50,7 @@ INSERT INTO Rank SELECT Score,Car_ID,Year,Make,Model FROM Ranking;
 UPDATE Rank
 SET Rank = rowid;   
 
+.headers ON
 .mode csv
 .output extract1.csv
 SELECT * From Rank;
