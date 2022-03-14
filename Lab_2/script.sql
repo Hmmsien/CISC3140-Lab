@@ -1,4 +1,3 @@
-.headers on
 .mode csv
 
 DROP TABLE IF EXISTS Judges;
@@ -7,6 +6,7 @@ CREATE TABLE Judges (
     Judge_Name text);
 .mode csv
 .import \Judges.csv Judges
+DELETE FROM Judges WHERE Judge_ID = 'Judge_ID';
 
 DROP TABLE IF EXISTS Car_Score;
 CREATE TABLE Car_Score(
@@ -14,6 +14,7 @@ CREATE TABLE Car_Score(
    Car_Score int);
 .mode csv
 .import \Car_Score.csv Car_Score
+DELETE FROM Car_Score WHERE Car_ID = 'Car_ID';
 
 DROP TABLE IF EXISTS Cars_Info;
 CREATE TABLE Cars_Info(
@@ -25,6 +26,7 @@ CREATE TABLE Cars_Info(
    Email text);
 .mode csv
 .import \Cars_Info.csv Cars_Info
+DELETE FROM Cars_Info WHERE Car_ID = 'Car_ID';
 
 DROP TABLE IF EXISTS Ranking;
 CREATE TABLE Ranking(
@@ -47,10 +49,11 @@ CREATE TABLE Rank(
    Make text,
    Model text);
 INSERT INTO Rank SELECT Score,Car_ID,Year,Make,Model FROM Ranking;
+
 UPDATE Rank
 SET Rank = rowid;   
 
-.headers ON
+.headers on
 .mode csv
 .output extract1.csv
 SELECT * From Rank;
@@ -71,8 +74,6 @@ where (
    select count(*) from Ranking as f
    where f.Make = Ranking.Make
 ) <= 3;
-
-
 
 .headers ON
 .mode csv
