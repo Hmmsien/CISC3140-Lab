@@ -65,15 +65,29 @@ CREATE TABLE Top3 (
 	Car_ID INT,
 	Year INT,
 	Make TEXT,
-	Model TEXT,
-	Total INT
+	Model TEXT
+	--Total INT
 );
 
-INSERT INTO Top3 SELECT rowid,* FROM Ranking ORDER BY Score DESC
-where (
-   select count(*) from Ranking as f
-   where f.Make = Ranking.Make
-) <= 3;
+INSERT INTO Top3 SELECT * FROM(
+ 	SELECT ROW_NUMBER() OVER( 
+	PARTITION BY Make
+	ORDER BY Rank ASC
+	)AS make_rank,
+	DENSE_RANK() OVER(
+		ORDER BY Rank ASC
+	) AS rank,
+	*
+	FROM (
+	 SELECT R.Car_ID, R.Year, R.Make, R.Model (
+		SELECT SUM(Car_Score) FROM Car_Score cs
+		Where R.Car_ID =  cs.Car_ID
+		GROUP BY cs.Car_ID
+	)total
+	FROM Rank R
+	ORDER BY total DESC
+	)
+)WHERE make_rank < 4;
 
 .headers ON
 .mode csv
