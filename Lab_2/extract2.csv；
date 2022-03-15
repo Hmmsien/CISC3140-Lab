@@ -1,0 +1,10 @@
+Car_ID,Year,Make,Model,Score,Rank,rankMake
+124,2015,Jeep,Wrangler,124,2,1
+216,2007,Chrystler,300,96,11,1
+57,2015,Scion,Frs,80,21,2
+218,2010,Chevy,Camaro,64,33,3
+170,2014,Chevy,Cruze,50,55,3
+100,2006,Volvo,S60r,22,116,1
+235,2013,Scion,Frs,20,121,2
+42,2001,Dodge,Viper,8,149,1
+0,2015,Chevy,Camaro,0,166,3

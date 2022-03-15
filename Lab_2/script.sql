@@ -58,38 +58,21 @@ SET Rank = rowid;
 .output extract1.csv
 SELECT * From Rank;
 
-
-DROP TABLE IF EXISTS Top3;
-CREATE TABLE Top3 (
-	Rank INT,
-	Car_ID INT,
-	Year INT,
-	Make TEXT,
-	Model TEXT
-	--Total INT
-);
-
-INSERT INTO Top3 SELECT * FROM(
- 	SELECT ROW_NUMBER() OVER( 
-	PARTITION BY Make
-	ORDER BY Rank ASC
-	)AS make_rank,
-	DENSE_RANK() OVER(
-		ORDER BY Rank ASC
-	) AS rank,
-	*
-	FROM (
-	 SELECT R.Car_ID, R.Year, R.Make, R.Model (
-		SELECT SUM(Car_Score) FROM Car_Score cs
-		Where R.Car_ID =  cs.Car_ID
-		GROUP BY cs.Car_ID
-	)total
-	FROM Rank R
-	ORDER BY total DESC
-	)
-)WHERE make_rank < 4;
-
+ALTER TABLE Ranking
+ADD Rank int;
+UPDATE Ranking
+SET Rank = rowid;
+ 
 .headers ON
 .mode csv
-.output extract2.csv
-SELECT * FROM Top3;
+.output extract2.csv；
+select top.*
+from (select top.*,
+             (select count(*)
+              from Ranking r
+              where r.Make = top.Make
+             ) as rankMake
+      from Ranking top 
+     ) top
+where rankMake < 4 ;
+
