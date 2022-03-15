@@ -43,11 +43,10 @@ In SQLscripts.sql, your above work should be saved in *.sql file(s) and saved to
 
 ----------------------------------------------------------------------------------------------------------------------------
 ## Installation:
-Run using the command make lab2
+Run using the command:  make lab2
 
 
 -----------------------------------------------------------------------------------------------------------------------------
 ## Dependencies:
-Sample Data: https://gist.github.com/katychuang/d66a59b6db4e59c16efd4c42ad411f8e
-BC Linux machines
+Sample Data: https://gist.github.com/katychuang/d66a59b6db4e59c16efd4c42ad411f8e  BC Linux machines
 
