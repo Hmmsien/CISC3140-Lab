@@ -65,7 +65,7 @@ SET Rank = rowid;
  
 .headers ON
 .mode csv
-.output extract2.csv；
+.output extract2.csv
 select top.*
 from (select top.*,
              (select count(*)
