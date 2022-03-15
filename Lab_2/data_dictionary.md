@@ -1,5 +1,6 @@
-#Data Dictionary
-###Cars_Info<br/>
+## Data Dictionary
+
+### Cars_Info<br/>
 |Column Name|Data Type|Required?|Primary Key?|Description|
 |---|---|---|---|---|
 |Car_ID|INT|No|Yes|Unique ID number identifying each cars|
@@ -21,6 +22,8 @@
 |-----------|---------|---------|------------|-----------|
 |Car_ID|INT|No|No|Unique ID number identifying each car|
 |Total|INT|No|No|Total score of each car|
+
+
 
 
 
