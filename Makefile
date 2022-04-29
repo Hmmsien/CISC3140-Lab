@@ -1,3 +1,3 @@
-lab2:
-	awk -f sepTable.awk data.csv
-	sqlite3 cars.db < script.sql
+lab4:
+	awk -f src/sepTable.awk data/data.csv
+	sqlite3 cars.db < src/script.sql
