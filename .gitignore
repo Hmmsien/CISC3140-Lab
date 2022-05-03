@@ -1,1 +1,5 @@
+# ugnore the folder named node_modules
 node_modules/
+
+# ugnore the folder named .vscode
+.vscode/
