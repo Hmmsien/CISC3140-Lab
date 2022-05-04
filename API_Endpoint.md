@@ -43,10 +43,10 @@ Get list of cars data with information about each cars.
 
 ### Sample request to get all cars in the database
 **Response**
-GET request for Cars data with no query string parameters
+GET request for Cars data with no query string parameters  
 ![GET request for Cars data with no query string parameters](./images/get_cars_data.png)
 
-GET request for Cars data with id
+GET request for Cars data with id  
 ![GET request for Cars data with id](./images/get_cars_by_id.png)
 
 
@@ -62,10 +62,10 @@ Get list of owners in the database along with the car ID of the owner's car id, 
 
 ### Sample request to get all owners in the database
 **Response**
-GET request for owners data with no query string parameters
+GET request for owners data with no query string parameters  
 ![GET request for owners data with no query string parameters](./images/get_owners.png)
 
-GET request for owner with id 20
+GET request for owner with id 20  
 ![GET request for owner with id 20](./images/get_owners_by_id.png)
 
 `POST /cars/`
@@ -74,7 +74,7 @@ Endpoint to add a new car/new cars to the database.
 
 ### Sample request to post multiple owners to the database
 
-Post multiple new cars to the database. 
+Post multiple new cars to the database.   
 ![Post multiple new cars to the database.](./images/post_new_cars.png)
 
 
@@ -84,7 +84,7 @@ Endpoint to add a new owner/new owners to the database.
 
 ### Sample request to post multiple owners to the database
 
-Post multiple new owners to the database. 
+Post multiple new owners to the database.   
 ![Post multiple new owners to the database.](./images/post_new_owner.png)
 
 `PATCH /cars/:carid`
@@ -93,7 +93,7 @@ Endpoint to update car/cars information to the database.
 
 ### Sample request to patch cars infomation by ID 95 to the database
 
-patch cars infomation by ID 95 to the database. 
+patch cars infomation by ID 95 to the database.   
 ![patch cars infomation by ID 95 to the database](./images/patch_owner_info.png)
 
 
@@ -103,5 +103,5 @@ Endpoint to update owner/owners information to the database.
 
 ### Sample request to patch owner infomation by ID 886 to the database
 
-patch owner infomation by ID 886 to the database. 
+patch owner infomation by ID 886 to the database.   
 ![patch owner infomation by ID 886 to the database](./images/patch_cars_info.png)
